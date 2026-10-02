@@ -25,6 +25,13 @@ export default class LinkedList {
 
         node.nextNode = this.head;
         this.head = node;
+
+        /** If the list is already empty, make sure the node is also assigned 
+         * as tail.
+         */
+        if(null === this.tail) {
+            this.tail = node;
+        }
     }
 
 }
