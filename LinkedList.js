@@ -47,4 +47,51 @@ export default class LinkedList {
         return this.listHead;
     }
 
+    tail() {
+        return this.listTail;
+    }
+
+    at(idx) {
+        let current = this.listHead;
+        let i = 0;
+
+        while(current !== null) {
+            if(i === idx) {
+                return current;
+            }
+
+            current = current.nextNode;
+            i++;
+        }
+    }
+
+    pop() {
+        let current = this.listHead;
+        let previous = null;
+
+        // List is empty
+        if(this.listHead === null) {
+            return;
+        }
+
+        // Only one node
+        if(this.listHead.nextNode === null) {
+            this.listHead = null;
+            this.listTail = null;
+            
+            this.length--;
+
+            return;
+        }
+
+        while(current.nextNode !== null) {
+            previous = current;
+            current = current.nextNode;
+        }
+
+        previous.nextNode = null;
+        this.listTail = previous;
+
+        this.length--;
+    }
 }
