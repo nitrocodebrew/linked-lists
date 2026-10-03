@@ -65,6 +65,76 @@ export default class LinkedList {
         }
     }
 
+    insertAt(data, index) {
+        // Insert at the BEGINNING
+        if(index === 0) {
+            this.prepend(data);
+            return;
+        }
+
+        if(index < 0 || index > this.length) {
+            return;
+        }
+
+        const node = new Node(data);
+        
+        let current = this.listHead;
+        let previous = null;
+
+        for(let i = 0; i < index; i++) {
+            previous = current;
+            current = current.nextNode;
+        }
+
+        previous.nextNode = node;
+        node.nextNode = current;
+
+        if(node.nextNode === null) {
+            this.listTail = node;
+        }
+
+        this.length++;
+    }
+
+    removeAt(index) {
+        if(index < 0 || index >= this.length) {
+            return;
+        }
+
+        // Off with its head!
+        if(index === 0) {
+            const removed = this.listHead;
+
+            this.listHead = this.listHead.nextNode;
+            this.length--;
+
+            if(this.length === 0) {
+                this.listTail = null;
+            }
+
+            return removed;
+        }
+
+        let current = this.listHead;
+        let previous = null;
+
+        for(let i = 0; i < index; i++) {
+            previous = current;
+            current = current.nextNode;
+        }
+
+        previous.nextNode = current.nextNode;
+
+        // ...and now, the tail!
+        if(current === this.listTail) {
+            this.listTail = previous;
+        }
+
+        this.length--;
+
+        return current;
+    }
+
     pop() {
         let current = this.listHead;
         let previous = null;
@@ -134,4 +204,5 @@ export default class LinkedList {
         string += 'null';
         return string;
     }
+
 }
