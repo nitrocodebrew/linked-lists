@@ -94,4 +94,30 @@ export default class LinkedList {
 
         this.length--;
     }
+
+    contains(data) {
+        let current = this.listHead;
+        
+        while(current !== null) {
+            if(current.value === data) {
+                return true;
+            }
+            current = current.nextNode;
+        }
+        return false;
+    }
+
+    findIndex(data) {
+        let current = this.listHead;
+        let i = 0;
+
+        while(current !== null) {
+            if(current.value === data) {
+                return i;
+            }
+            current = current.nextNode;
+            i++;
+        }
+        return -1;
+    }
 }
