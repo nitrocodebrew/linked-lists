@@ -110,6 +110,7 @@ export default class LinkedList {
     findIndex(data) {
         let current = this.listHead;
         let i = 0;
+    
 
         while(current !== null) {
             if(current.value === data) {
@@ -119,5 +120,18 @@ export default class LinkedList {
             i++;
         }
         return -1;
+    }
+
+    toString() {
+        let current = this.listHead;
+        let string = '';
+
+        while(current !== null) {
+            string += `(${current.value}) => `;
+            current = current.nextNode;
+        }
+        
+        string += 'null';
+        return string;
     }
 }
