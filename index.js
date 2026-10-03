@@ -53,4 +53,9 @@ console.log(list.contains('Kristen')); // False
 console.log(list.contains('Pat')); // True
 console.log(list.contains('April')) // True
 
+// at()
+console.log(list.at(0)); // Katy
+console.log(list.at(2)); // Lacey
+console.log(list.at(3)); // Sameer
+
 
